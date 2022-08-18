@@ -7,11 +7,15 @@ from .serializers import PostSerializer
 
 # Create your views here.
 
+
 class PostView(APIView):
-    permission_class = (AllowAny )
+    permission_classes = (AllowAny, )   
 
     def get(self, request, *args, **kwargs):
         queryset = Post.objects.all()
         serializer = PostSerializer(queryset, many=True)
         # if serializer.is_valid():
         return Response(serializer.data)
+
+
+
